@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CDPlusPlus_Builder_Version_1.0.0>
+  <top>
+    <components> Dropoff  </components>
+    <components> Labeling </components>
+    <out> out </out>
+    <in> in </in>
+    <Link> in in@Dropoff </Link>
+    <Link> out@Dropoff in@Labeling </Link>
+    <Link> out@Labeling out </Link>
+  </top>
+  <Dropoff>
+    <components> checkin@Checkin </components>
+    <components> checkfile@Checkfile </components>
+    <in> in </in>
+    <out> out </out>
+    <Link> in in@checkin </Link>
+    <Link> out@checkin in@checkfile </Link>
+    <Link> out@checkfile out </Link>
+    <Link> out@checkfile done@checkin </Link>
+  </Dropoff>
+  <checkin>
+    <preparation> 00:00:10:000 </preparation>
+  </checkin>
+  <checkfile>
+    <distribution> normal </distribution>
+    <mean> 4 </mean>
+    <deviation> 3 </deviation>
+  </checkfile>
+  <Labeling>
+    <components> filling@Filling </components>
+    <components> consulting@Consulting </components>
+    <in> in </in>
+    <out> out </out>
+    <Link> in in@filling </Link>
+    <Link> out@filling in@consulting </Link>
+    <Link> out@consulting out </Link>
+    <Link> out@consulting done@filling </Link>
+  </Labeling>
+  <filling>
+    <preparation> 00:00:12:000 </preparation>
+  </filling>
+  <consulting>
+    <distribution> normal </distribution>
+    <mean> 3 </mean>
+    <deviation> 3 </deviation>
+  </consulting>
+</CDPlusPlus_Builder_Version_1.0.0>
